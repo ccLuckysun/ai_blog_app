@@ -1,0 +1,6 @@
+name: ai_blog
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - django=6.0.6
