@@ -4,79 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Blog Generator</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .loader {
-            width: 36px;
-            height: 36px;
-            border: 5px solid transparent;
-            border-right-color: #6b21a8;
-            border-bottom-color: #6b21a8;
-            border-radius: 9999px;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <link
+        href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+        rel="stylesheet"
+    >
 </head>
+
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <header class="bg-blue-600 text-white">
         <div class="max-w-6xl mx-auto px-5 py-5 flex items-center justify-between">
             <h1 class="text-3xl font-bold">AI Blog Generator</h1>
-            <a href="#" class="font-semibold hover:underline">Logout</a>
+
+            <!-- Public navigation before login. -->
+            <nav class="font-semibold">
+                <a href="{% url 'login' %}" class="hover:underline">Login</a>
+                <a href="{% url 'signup' %}" class="hover:underline ml-3">Signup</a>
+            </nav>
         </div>
     </header>
 
     <main class="flex-1 flex items-start justify-center px-5 pt-24 pb-10">
-        <section class="w-full max-w-5xl bg-white rounded-lg shadow-md px-8 py-8 transform transition-transform duration-200 cursor-pointer hover:scale-105 active:scale-95">
+        <section class="w-full max-w-5xl bg-white rounded-lg shadow-md px-8 py-8">
             <div class="text-center">
-                <h2 class="text-2xl font-bold text-gray-900 mb-5">Welcome to the AI Blog Generator</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-5">
+                    Welcome to the AI Blog Generator
+                </h2>
                 <p class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed">
-                    Generate high-quality blog articles from YouTube videos using artificial intelligence.
-                    Simply enter the link to the YouTube video below and let the AI create the content for you!
+                    Please log in or create an account before generating and managing blog articles.
                 </p>
             </div>
 
-            <div class="mt-8">
-                <label for="youtube-link" class="block text-xl font-bold text-gray-900 mb-4">Enter Youtube Video Link</label>
-                <div class="flex gap-4">
-                    <input
-                        id="youtube-link"
-                        type="text"
-                        class="flex-1 border-2 border-yellow-500 rounded px-4 py-3 text-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                        value=""
-                    >
-                    <button id="generate-btn" class="bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded shadow hover:bg-blue-700 active:bg-blue-800">
-                        Generate
-                    </button>
-                </div>
-            </div>
-
-            <div class="mt-10">
-                <h3 class="text-2xl font-bold text-gray-900">Generated Blog Article</h3>
-                <div id="article-result" class="mt-4 p-4 bg-gray-100 rounded-lg">
-                    <p class="text-gray-700">Your generated blog article will appear here.</p>
-                </div>
+            <div class="mt-8 flex justify-center gap-4">
+                <a
+                    href="{% url 'login' %}"
+                    class="bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded shadow hover:bg-blue-700 active:bg-blue-800"
+                >
+                    Login
+                </a>
+                <a
+                    href="{% url 'signup' %}"
+                    class="bg-gray-200 text-gray-900 text-lg font-medium px-6 py-3 rounded shadow hover:bg-gray-300 active:bg-gray-400"
+                >
+                    Signup
+                </a>
             </div>
         </section>
     </main>
-
-    <script>
-        const generateBtn = document.getElementById('generate-btn');
-        const articleResult = document.getElementById('article-result');
-
-        generateBtn.addEventListener('click', function () {
-            articleResult.innerHTML = `
-                <div class="flex items-center gap-3">
-                    <div class="loader"></div>
-                    <p class="text-gray-700">Generating blog article...</p>
-                </div>
-            `;
-        });
-    </script>
 </body>
 </html>
